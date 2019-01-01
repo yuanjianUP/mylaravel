@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('user/index','UserController@index');
+//Route::get('login','Admin\AdminController@login');
+Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+    Route::get('index','IndexController@index');
+    Route::get('info','IndexController@info');
+    Route::get('login','AdminController@login');
+    Route::post('login_check','AdminController@login_check');
+});
