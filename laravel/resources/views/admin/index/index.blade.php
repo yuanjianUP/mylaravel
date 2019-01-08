@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="style/css/ch-ui.admin.css">
-	<link rel="stylesheet" href="style/font/css/font-awesome.min.css">
-	<script type="text/javascript" src="style/js/jquery.js"></script>
-    <script type="text/javascript" src="style/js/ch-ui.admin.js"></script>
+	<link rel="stylesheet" href="{{asset('admins')}}/style/css/ch-ui.admin.css">
+	<link rel="stylesheet" href="{{asset('admins')}}/style/font/css/font-awesome.min.css">
+	<script type="text/javascript" src="{{asset('admins')}}/style/js/jquery.js"></script>
+    <script type="text/javascript" src="{{asset('admins')}}/style/js/ch-ui.admin.js"></script>
 </head>
 <body>
 	<!--头部 开始-->
@@ -19,9 +19,9 @@
 		</div>
 		<div class="top_right">
 			<ul>
-				<li>管理员：admin</li>
+				<li>管理员：{{Auth::guard('admin')->user()->username}}</li>
 				<li><a href="pass.html" target="main">修改密码</a></li>
-				<li><a href="#">退出</a></li>
+				<li><a href="{{url('admin/logout')}}">退出</a></li>
 			</ul>
 		</div>
 	</div>
@@ -34,7 +34,7 @@
             	<h3><i class="fa fa-fw fa-clipboard"></i>常用操作</h3>
                 <ul class="sub_menu">
                     <li><a href="add.html" target="main"><i class="fa fa-fw fa-plus-square"></i>添加页</a></li>
-                    <li><a href="list.html" target="main"><i class="fa fa-fw fa-list-ul"></i>列表页</a></li>
+                    <li><a href="{{url('admin/goods/index')}}" target="main"><i class="fa fa-fw fa-list-ul"></i>列表页</a></li>
                     <li><a href="tab.html" target="main"><i class="fa fa-fw fa-list-alt"></i>tab页</a></li>
                     <li><a href="img.html" target="main"><i class="fa fa-fw fa-image"></i>图片列表</a></li>
                 </ul>

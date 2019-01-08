@@ -17,8 +17,15 @@ Route::get('/', function () {
 Route::get('user/index','UserController@index');
 //Route::get('login','Admin\AdminController@login');
 Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
-    Route::get('index','IndexController@index');
-    Route::get('info','IndexController@info');
-    Route::get('login','AdminController@login');
+    Route::group(['middleware','login'],function(){
+        Route::get('index','IndexController@index');
+        Route::get('info','IndexController@info');
+        Route::get('login','AdminController@login');
+        Route::get('goods/index','GoodsController@index');
+        Route::match(['get','post'],'goods/add','GoodsController@add');
+        Route::match(['get','post'],'goods/update/{goods}','GoodsController@update');
+        Route::post('goods/del','GoodsController@del');
+    });
     Route::post('login_check','AdminController@login_check');
+    Route::get('logout','AdminController@logout');
 });
